@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:musix_app/views/chart.dart';
+import 'package:musix_app/views/screens/splash_screen.dart';
 
 void main() => runApp(const MyApp());
 
@@ -14,8 +14,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        fontFamily: 'Poppins'
       ),
-      home: const ChartComp(),
+      home: const SplashScreen(),
     );
   }
 }
