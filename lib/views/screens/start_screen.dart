@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:musix_app/utils/Size.dart';
 import 'package:musix_app/utils/Theme.dart';
+import 'package:musix_app/views/screens/login_screen.dart';
 import 'package:musix_app/views/widgets/button_rounded.dart';
 
 class StartScreen extends StatefulWidget {
@@ -15,39 +15,50 @@ class _StartScreenState extends State<StartScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        color: Colors.white,
-        width: SizeUtil.width(context),
-        height: SizeUtil.height(context),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Flexible(
-              flex: 1,
-              child: Text(
-                'Selamat Datang',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Pallete.primary,
-                  fontSize: 33,
+      body: SingleChildScrollView(
+        child: Container(
+          color: Colors.white,
+          width: SizeUtil.width(context),
+          height: SizeUtil.height(context),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Flexible(
+                flex: 5,
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: SizeUtil.height(context) * 0.20,
+                    ),
+                    Text(
+                      'Selamat Datang',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Pallete.primary,
+                        fontSize: 33,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 40,
+                    ),
+                    Container(
+                      child: Center(
+                        child: Image.asset("assets/images/logo.png"),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            ),
-            Flexible(
-              flex: 2,
-              child: Container(
-                child: Center(
-                  child: Image.asset("assets/images/logo.png"),
-                ),
-              ),
-            ),
-            Flexible(
-              flex: 1,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
+              Flexible(
+                flex: 2,
                 child: Column(
                   children: <Widget>[
-                    const RoundedButton(),
+                    RoundedButton(
+                      press: () => Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => const LoginScreen()),
+                      ),
+                    ),
                     const SizedBox(
                       height: 15.0,
                     ),
@@ -89,12 +100,33 @@ class _StartScreenState extends State<StartScreen> {
                           ),
                         ],
                       ),
+                    ),
+                    const SizedBox(
+                      height: 10.0,
+                    ),
+                    Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          const Text("Belum punya akun ? "),
+                          GestureDetector(
+                            onTap: () {},
+                            child: Text(
+                              "Daftar",
+                              style: TextStyle(
+                                color: Pallete.primary,
+                                decoration: TextDecoration.underline,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
                     )
                   ],
                 ),
               ),
-            )
-          ],
+            ],
+          ),
         ),
       ),
     );
