@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:musix_app/views/screens/splash_screen.dart';
 
-void main() => runApp(const MyApp());
+void main() => runApp(const Application());
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class Application extends StatelessWidget {
+  const Application({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
@@ -12,10 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        fontFamily: 'Poppins'
-      ),
+      theme: ThemeData(primarySwatch: Colors.blue, fontFamily: 'Poppins'),
       home: const SplashScreen(),
     );
   }
