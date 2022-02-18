@@ -1,7 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:musix_app/views/screens/splash_screen.dart';
 
-void main() => runApp(const Application());
+void main() {
+  // SystemChrome.setSystemUIOverlayStyle(
+  //   const SystemUiOverlayStyle(
+  //     statusBarColor: Colors.white,
+  //     statusBarBrightness: Brightness.dark,
+  //     statusBarIconBrightness: Brightness.dark,
+  //   ),
+  // );
+  runApp(const Application());
+}
 
 class Application extends StatelessWidget {
   const Application({Key? key}) : super(key: key);
@@ -12,7 +22,7 @@ class Application extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.blue, fontFamily: 'Poppins'),
+      theme: ThemeData(primarySwatch: Colors.purple, fontFamily: 'Poppins'),
       home: const SplashScreen(),
     );
   }
