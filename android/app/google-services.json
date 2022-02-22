@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "681674098150",
+    "project_id": "grf4music",
+    "storage_bucket": "grf4music.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:681674098150:android:3408a4816fbd722ad6c227",
+        "android_client_info": {
+          "package_name": "com.example.musix_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "681674098150-3u4sfibrlnot1j9pfbv3juajrc1ddiim.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.musix_app",
+            "certificate_hash": "8f1b75fe16e274d4225819ffb875e36c14a0d956"
+          }
+        },
+        {
+          "client_id": "681674098150-9uhrdv11l0j748pmdgh1rics3u0mkgdd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBg-AZR7rhn-FEJg4_lNuXT6tydFUvkiyc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "681674098150-9uhrdv11l0j748pmdgh1rics3u0mkgdd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
