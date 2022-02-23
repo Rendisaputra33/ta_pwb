@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:musix_app/services/firebase_client.dart';
 import 'package:musix_app/utils/Size.dart';
 import 'package:musix_app/utils/Theme.dart';
 import 'package:musix_app/views/screens/register_screen.dart';
@@ -14,6 +15,9 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final TextEditingController emailC = TextEditingController();
+  final TextEditingController passwordC = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,13 +79,15 @@ class _LoginScreenState extends State<LoginScreen> {
                         SizedBox(
                           height: SizeUtil.height(context) * 0.06,
                         ),
-                        const CustomInput(
+                        CustomInput(
+                          controller: emailC,
                           hint: 'youremail@example.com',
                         ),
                         SizedBox(
                           height: SizeUtil.height(context) * 0.03,
                         ),
-                        const CustomInput(
+                        CustomInput(
+                          controller: passwordC,
                           hint: 'Your password',
                           secure: true,
                         ),
@@ -103,7 +109,11 @@ class _LoginScreenState extends State<LoginScreen> {
                         SizedBox(
                           height: SizeUtil.height(context) * 0.03,
                         ),
-                        const RoundedButton(),
+                        RoundedButton(
+                          press: () {
+                            FirebaseClient.login(emailC.text, passwordC.text);
+                          },
+                        ),
                         SizedBox(
                           height: SizeUtil.height(context) * 0.04,
                         ),

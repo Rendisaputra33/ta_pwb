@@ -1,15 +1,10 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:musix_app/views/screens/splash_screen.dart';
 
-void main() {
-  // SystemChrome.setSystemUIOverlayStyle(
-  //   const SystemUiOverlayStyle(
-  //     statusBarColor: Colors.white,
-  //     statusBarBrightness: Brightness.dark,
-  //     statusBarIconBrightness: Brightness.dark,
-  //   ),
-  // );
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const Application());
 }
 

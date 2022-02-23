@@ -1,9 +1,12 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:musix_app/services/firebase_client.dart';
 import 'package:musix_app/utils/Size.dart';
 import 'package:musix_app/utils/Theme.dart';
+import 'package:musix_app/views/screens/home_screen.dart';
 import 'package:musix_app/views/screens/start_screen.dart';
+// import 'package:musix_app/views/screens/start_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -16,13 +19,14 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(
-      const Duration(seconds: 6),
-      () => Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const StartScreen()),
-      ),
-    );
+    FirebaseClient.getStreamAuth.listen((event) {
+      print(event);
+      if (event == null) {
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const StartScreen()));
+      } else {
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const HomeScreen()));
+      }
+    });
   }
 
   @override

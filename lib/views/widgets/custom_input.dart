@@ -4,8 +4,9 @@ import 'package:musix_app/utils/Theme.dart';
 class CustomInput extends StatefulWidget {
   final bool? secure;
   final String? hint;
+  final TextEditingController? controller;
 
-  const CustomInput({Key? key, this.secure, this.hint}) : super(key: key);
+  const CustomInput({Key? key, this.secure, this.hint, this.controller}) : super(key: key);
 
   @override
   State<CustomInput> createState() => _CustomInputState();
@@ -16,6 +17,7 @@ class _CustomInputState extends State<CustomInput> {
   Widget build(BuildContext context) {
     return Container(
       child: TextField(
+        controller: widget.controller,
         obscureText: widget.secure ?? false,
         decoration: InputDecoration(
           hintText: widget.hint,
