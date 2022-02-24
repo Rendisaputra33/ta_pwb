@@ -8,8 +8,10 @@ class RoundedButton extends StatelessWidget {
   final double? width;
   final BorderSide? border;
   final Function()? press;
+  final String? text;
 
-  const RoundedButton({Key? key, this.color, this.child, this.width, this.border, this.press})
+  const RoundedButton(
+      {Key? key, this.color, this.child, this.width, this.border, this.press, this.text})
       : super(key: key);
 
   @override
@@ -26,9 +28,9 @@ class RoundedButton extends StatelessWidget {
           ),
         ),
         child: child ??
-            const Text(
-              "Masuk",
-              style: TextStyle(
+            Text(
+              text ?? "Masuk",
+              style: const TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
                 fontSize: 18,

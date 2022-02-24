@@ -31,7 +31,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
               Container(
                 height: SizeUtil.height(context) * 0.75,
-                width: SizeUtil.width(context) * 0.80,
+                width: SizeUtil.width(context) * 0.87,
                 padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
                   color: Colors.white,
