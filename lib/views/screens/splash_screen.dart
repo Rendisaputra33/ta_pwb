@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:musix_app/services/firebase_client.dart';
+import 'package:musix_app/utils/Redirect.dart';
 import 'package:musix_app/utils/Size.dart';
 import 'package:musix_app/utils/Theme.dart';
 import 'package:musix_app/views/screens/home_screen.dart';
@@ -22,9 +23,9 @@ class _SplashScreenState extends State<SplashScreen> {
     FirebaseClient.getStreamAuth.listen((event) {
       print(event);
       if (event == null) {
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const StartScreen()));
+        Redirect.switchTo(context, '/start');
       } else {
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const HomeScreen()));
+        Redirect.switchTo(context, '/home');
       }
     });
   }

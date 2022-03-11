@@ -9,7 +9,16 @@ class FirebaseClient {
     try {
       await auth.signInWithEmailAndPassword(email: email, password: password);
     } on FirebaseAuthException catch (e) {
-      print(e.message);
+      throw Exception(e.message);
+    }
+  }
+
+  static Future<void> register(String email, String password) async {
+    try {
+      await auth.createUserWithEmailAndPassword(
+          email: email, password: password);
+    } on FirebaseAuthException catch (e) {
+      throw Exception(e.message);
     }
   }
 }

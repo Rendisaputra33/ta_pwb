@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:musix_app/utils/Redirect.dart';
 import 'package:musix_app/utils/Size.dart';
 import 'package:musix_app/utils/Theme.dart';
 import 'package:musix_app/views/screens/login_screen.dart';
@@ -54,10 +55,7 @@ class _StartScreenState extends State<StartScreen> {
                 child: Column(
                   children: <Widget>[
                     RoundedButton(
-                      press: () => Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(builder: (context) => const LoginScreen()),
-                      ),
+                      press: () => Redirect.switchTo(context, '/login'),
                     ),
                     const SizedBox(
                       height: 15.0,

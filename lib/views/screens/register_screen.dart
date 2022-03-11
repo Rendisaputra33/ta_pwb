@@ -25,7 +25,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             alignment: Alignment.center,
             children: <Widget>[
               Positioned(
-                top: 0,
+                top: 25,
                 right: 0,
                 child: Image.asset('assets/images/bg_reg.png'),
               ),
@@ -61,33 +61,34 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         height: SizeUtil.height(context) * 0.06,
                       ),
                       const CustomInput(
+                        hint: 'username_domain',
+                      ),
+                      SizedBox(
+                        height: SizeUtil.height(context) * 0.03,
+                      ),
+                      const CustomInput(
                         hint: 'youremail@example.com',
                       ),
                       SizedBox(
                         height: SizeUtil.height(context) * 0.03,
                       ),
                       const CustomInput(
-                        hint: 'Your password',
+                        hint: 'Your Password',
                         secure: true,
                       ),
                       SizedBox(
                         height: SizeUtil.height(context) * 0.03,
                       ),
                       const CustomInput(
-                        hint: 'Your password',
+                        hint: 'Cofirm Password',
                         secure: true,
                       ),
                       SizedBox(
                         height: SizeUtil.height(context) * 0.03,
                       ),
-                      const CustomInput(
-                        hint: 'Your password',
-                        secure: true,
+                      const RoundedButton(
+                        text: 'Daftar',
                       ),
-                      SizedBox(
-                        height: SizeUtil.height(context) * 0.03,
-                      ),
-                      const RoundedButton(),
                       SizedBox(
                         height: SizeUtil.height(context) * 0.04,
                       ),

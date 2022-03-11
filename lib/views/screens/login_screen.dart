@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:musix_app/provider/auth_provider.dart';
 import 'package:musix_app/services/firebase_client.dart';
+import 'package:musix_app/utils/Redirect.dart';
 import 'package:musix_app/utils/Size.dart';
 import 'package:musix_app/utils/Theme.dart';
 import 'package:musix_app/views/screens/register_screen.dart';
@@ -19,6 +20,20 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController emailC = TextEditingController();
   final TextEditingController passwordC = TextEditingController();
+
+  Function() callbackLogin(AuthProvider loading, BuildContext context) {
+    return () async {
+      try {
+        loading.setLoading(true);
+        await FirebaseClient.login(emailC.text, passwordC.text);
+        loading.setLoading(false);
+        Redirect.switchTo(context, '/home');
+      } catch (e) {
+        loading.setLoading(false);
+        print('error');
+      }
+    };
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -125,11 +140,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                         fontSize: 18,
                                       ),
                                     ),
-                              press: () async {
-                                loading.setLoading(true);
-                                await FirebaseClient.login(emailC.text, passwordC.text);
-                                loading.setLoading(false);
-                              },
+                              press: callbackLogin(loading, context),
                             ),
                             SizedBox(
                               height: SizeUtil.height(context) * 0.04,
@@ -147,7 +158,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                   onTap: () => Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => const RegisterScreen(),
+                                      builder: (context) =>
+                                          const RegisterScreen(),
                                     ),
                                   ),
                                   child: Text(
