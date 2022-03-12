@@ -25,14 +25,29 @@ class _LoginScreenState extends State<LoginScreen> {
     return () async {
       try {
         loading.setLoading(true);
+        validate();
         await FirebaseClient.login(emailC.text, passwordC.text);
         loading.setLoading(false);
         Redirect.switchTo(context, '/home');
       } catch (e) {
         loading.setLoading(false);
-        print('error');
+        hanldeError(context, e.toString().split('Exception: ')[1]);
       }
     };
+  }
+
+  void validate() {
+    if (emailC.text.isEmpty && passwordC.text.isEmpty) {
+      throw Exception('email and password cant be blank');
+    }
+  }
+
+  void hanldeError(BuildContext context, String message) {
+    var snack = SnackBar(
+      content: Text(message),
+      backgroundColor: Colors.red[600],
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snack);
   }
 
   @override
