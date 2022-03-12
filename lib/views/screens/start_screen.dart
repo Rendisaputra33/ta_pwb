@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:musix_app/utils/Redirect.dart';
 import 'package:musix_app/utils/Size.dart';
 import 'package:musix_app/utils/Theme.dart';
-import 'package:musix_app/views/screens/login_screen.dart';
 import 'package:musix_app/views/widgets/button_rounded.dart';
 
 class StartScreen extends StatefulWidget {

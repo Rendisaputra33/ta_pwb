@@ -1,12 +1,8 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:musix_app/services/firebase_client.dart';
 import 'package:musix_app/utils/Redirect.dart';
 import 'package:musix_app/utils/Size.dart';
 import 'package:musix_app/utils/Theme.dart';
-import 'package:musix_app/views/screens/home_screen.dart';
-import 'package:musix_app/views/screens/start_screen.dart';
 // import 'package:musix_app/views/screens/start_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -21,7 +17,6 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     FirebaseClient.getStreamAuth.listen((event) {
-      print(event);
       if (event == null) {
         Redirect.switchTo(context, '/start');
       } else {

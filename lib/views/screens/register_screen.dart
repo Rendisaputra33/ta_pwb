@@ -30,9 +30,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
         loading.setLoading(false);
       } on Exception catch (e) {
         loading.setLoading(false);
-        print(e);
+        hanldeError(context, e.toString().split('Exception: ')[1]);
       }
     };
+  }
+
+  void hanldeError(BuildContext context, String message) {
+    var snack = SnackBar(
+      content: Text(message),
+      backgroundColor: Colors.red[600],
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snack);
   }
 
   void validateForm() {
