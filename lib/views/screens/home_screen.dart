@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:musix_app/provider/auth_provider.dart';
 import 'package:musix_app/services/firebase_client.dart';
 import 'package:musix_app/utils/Size.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<AuthProvider>(context);
+
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
@@ -33,7 +37,8 @@ class HomeScreen extends StatelessWidget {
                   await FirebaseClient.auth.signOut();
                 },
                 child: const Text('signout'),
-              )
+              ),
+              Text(authProvider.user.email!)
             ],
           ),
         ),

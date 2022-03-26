@@ -49,10 +49,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
         pC.text.isEmpty &&
         cC.text.isEmpty) {
       throw Exception('field cant blank');
+    } else if (pC.text == cC.text) {
+      throw Exception('password conformation dost match');
     }
-    // else if (pC.text == cC.text) {
-    //   throw Exception('password conformation dost match');
-    // }
   }
 
   @override
