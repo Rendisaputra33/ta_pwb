@@ -14,9 +14,10 @@ class StartScreen extends StatefulWidget {
 }
 
 class _StartScreenState extends State<StartScreen> {
-  void loginWithGoogle(AuthProvider provider) async {
+  void loginWithGoogle(AuthProvider provider, BuildContext context) async {
     try {
       await provider.signInWithGoogle();
+      Redirect.switchTo(context, '/home', replace: true);
     } on Exception catch (e) {
       print(e.toString());
     }
@@ -53,10 +54,8 @@ class _StartScreenState extends State<StartScreen> {
                     const SizedBox(
                       height: 40,
                     ),
-                    Container(
-                      child: Center(
-                        child: Image.asset("assets/images/logo.png"),
-                      ),
+                    Center(
+                      child: Image.asset("assets/images/logo.png"),
                     ),
                   ],
                 ),
@@ -91,7 +90,7 @@ class _StartScreenState extends State<StartScreen> {
                         width: 1,
                         style: BorderStyle.solid,
                       ),
-                      press: () => loginWithGoogle(authProvider),
+                      press: () => loginWithGoogle(authProvider, context),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[

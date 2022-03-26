@@ -52,4 +52,12 @@ class AuthProvider extends ChangeNotifier {
       throw Exception(e.message);
     }
   }
+
+  Future<void> googleLogout() async {
+    try {
+      await google.disconnect();
+    } on FirebaseAuthException catch (e) {
+      print(e.message);
+    }
+  }
 }
