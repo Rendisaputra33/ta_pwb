@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:musix_app/provider/auth_provider.dart';
 import 'package:musix_app/utils/Redirect.dart';
 import 'package:musix_app/utils/Size.dart';
 import 'package:musix_app/utils/Theme.dart';
 import 'package:musix_app/views/widgets/button_rounded.dart';
+import 'package:provider/provider.dart';
 
 class StartScreen extends StatefulWidget {
   const StartScreen({Key? key}) : super(key: key);
@@ -12,8 +14,18 @@ class StartScreen extends StatefulWidget {
 }
 
 class _StartScreenState extends State<StartScreen> {
+  void loginWithGoogle(AuthProvider provider) async {
+    try {
+      await provider.signInWithGoogle();
+    } on Exception catch (e) {
+      print(e.toString());
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<AuthProvider>(context);
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
@@ -79,6 +91,7 @@ class _StartScreenState extends State<StartScreen> {
                         width: 1,
                         style: BorderStyle.solid,
                       ),
+                      press: () => loginWithGoogle(authProvider),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[

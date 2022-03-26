@@ -22,6 +22,14 @@
           }
         },
         {
+          "client_id": "681674098150-698hrml2apktel6vr9k0jdrc7nf3pgs0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.musix_app",
+            "certificate_hash": "fbc8c1d7436c3545c8c5103cd66c25cb8e2037f7"
+          }
+        },
+        {
           "client_id": "681674098150-9uhrdv11l0j748pmdgh1rics3u0mkgdd.apps.googleusercontent.com",
           "client_type": 3
         }

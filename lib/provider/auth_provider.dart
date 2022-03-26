@@ -28,7 +28,6 @@ class AuthProvider extends ChangeNotifier {
   // setter state user
   void setUser(User user) {
     _user = user;
-    notifyListeners();
   }
 
   Future signInWithGoogle() async {
@@ -41,7 +40,7 @@ class AuthProvider extends ChangeNotifier {
 
       final googleAuth = await authenticate.authentication;
 
-      final credential = await GoogleAuthProvider.credential(
+      final credential = GoogleAuthProvider.credential(
         accessToken: googleAuth.accessToken,
         idToken: googleAuth.idToken,
       );
