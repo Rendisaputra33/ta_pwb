@@ -8,11 +8,12 @@ import 'package:musix_app/views/screens/splash_screen.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  final User? user = FirebaseAuth.instance.currentUser;
+
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.white,
     statusBarIconBrightness: Brightness.dark,
   ));
+
   runApp(const Application());
 }
 
@@ -32,8 +33,11 @@ class Application extends StatelessWidget {
           if (snapshot.connectionState == ConnectionState.active) {
             return SplashScreen(isAuth: (snapshot.data != null));
           } else {
-            return const Center(
-              child: CircularProgressIndicator(color: Colors.purple),
+            return Container(
+              color: Colors.white,
+              child: const Center(
+                child: CircularProgressIndicator(color: Colors.purple),
+              ),
             );
           }
         },
