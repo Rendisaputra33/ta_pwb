@@ -20,15 +20,15 @@ class AuthProvider extends ChangeNotifier {
   GoogleSignInAccount get account => _account!;
 
   // setter state loading
-  void setLoading(bool status) {
+  AuthProvider setLoading(bool status) {
     _loading = status;
     notifyListeners();
+    return this;
   }
 
   // setter state user
-  void setUser(User user) {
-    _user = user;
-    notifyListeners();
+  void setUser() {
+    _user = FirebaseClient.auth.currentUser;
   }
 
   Future signInWithGoogle() async {
@@ -54,9 +54,7 @@ class AuthProvider extends ChangeNotifier {
 
   Future<void> googleLogout() async {
     try {
-      if (_user?.displayName != null) {
-        await google.disconnect();
-      }
+      await google.disconnect();
     } on FirebaseAuthException catch (e) {
       print(e.message);
     }

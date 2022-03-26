@@ -17,6 +17,7 @@ class _StartScreenState extends State<StartScreen> {
   void loginWithGoogle(AuthProvider provider, BuildContext context) async {
     try {
       await provider.signInWithGoogle();
+      provider.setUser();
       Redirect.switchTo(context, '/home', replace: true);
     } on Exception catch (e) {
       print(e.toString());

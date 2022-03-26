@@ -34,7 +34,9 @@ class HomeScreen extends StatelessWidget {
               const Text('home'),
               ElevatedButton(
                 onPressed: () async {
-                  await authProvider.googleLogout();
+                  if (authProvider.user.photoURL != null) {
+                    await authProvider.googleLogout();
+                  }
                   await FirebaseClient.auth.signOut();
                 },
                 child: const Text('signout'),

@@ -17,10 +17,11 @@ class EntryApp extends StatelessWidget {
 
             if (snapshot.connectionState == ConnectionState.active) {
               if (snapshot.data != null) {
-                authProvider.setUser(snapshot.data!);
+                authProvider.setUser();
+                return SplashScreen(isAuth: (snapshot.data != null));
+              } else {
+                return SplashScreen(isAuth: (snapshot.data != null));
               }
-
-              return SplashScreen(isAuth: (snapshot.data != null));
               // when waitinf
             } else if (snapshot.connectionState == ConnectionState.waiting) {
               return Container(

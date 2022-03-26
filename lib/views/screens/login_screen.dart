@@ -26,9 +26,8 @@ class _LoginScreenState extends State<LoginScreen> {
       try {
         provider.setLoading(true);
         validate();
-        final cret = await FirebaseClient.login(emailC.text, passwordC.text);
-        provider.setLoading(false);
-        provider.setUser(cret.user!);
+        await FirebaseClient.login(emailC.text, passwordC.text);
+        provider.setLoading(false).setUser();
         Redirect.switchTo(context, '/home');
       } catch (e) {
         provider.setLoading(false);
