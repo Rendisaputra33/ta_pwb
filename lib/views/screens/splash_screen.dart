@@ -1,12 +1,15 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
-import 'package:musix_app/services/firebase_client.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:musix_app/utils/Redirect.dart';
 import 'package:musix_app/utils/Size.dart';
 import 'package:musix_app/utils/Theme.dart';
 // import 'package:musix_app/views/screens/start_screen.dart';
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+  final bool isAuth;
+  const SplashScreen({Key? key, required this.isAuth}) : super(key: key);
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
@@ -16,13 +19,22 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    FirebaseClient.getStreamAuth.listen((event) {
-      if (event == null) {
-        Redirect.switchTo(context, '/start');
+    Timer(const Duration(seconds: 2), () {
+      if (widget.isAuth) {
+        // SchedulerBinding.instance?.addPostFrameCallback((_) {
+        Redirect.switchTo(context, '/home', replace: true);
+        // });
       } else {
-        Redirect.switchTo(context, '/home');
+        // SchedulerBinding.instance?.addPostFrameCallback((_) {
+        Redirect.switchTo(context, '/start', replace: true);
+        // });
       }
     });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   @override

@@ -1,11 +1,14 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:musix_app/services/firebase_client.dart';
 import 'package:musix_app/views/screens/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  final User? user = FirebaseAuth.instance.currentUser;
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.white,
     statusBarIconBrightness: Brightness.dark,
@@ -23,7 +26,18 @@ class Application extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: 'Poppins'),
-      home: const SplashScreen(),
+      home: StreamBuilder<User?>(
+        stream: FirebaseClient.getStreamAuth,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.active) {
+            return SplashScreen(isAuth: (snapshot.data != null));
+          } else {
+            return const Center(
+              child: CircularProgressIndicator(color: Colors.purple),
+            );
+          }
+        },
+      ),
     );
   }
 }
