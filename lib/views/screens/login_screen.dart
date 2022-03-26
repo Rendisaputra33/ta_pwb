@@ -21,16 +21,17 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController emailC = TextEditingController();
   final TextEditingController passwordC = TextEditingController();
 
-  Function() callbackLogin(AuthProvider loading, BuildContext context) {
+  Function() callbackLogin(AuthProvider provider, BuildContext context) {
     return () async {
       try {
-        loading.setLoading(true);
+        provider.setLoading(true);
         validate();
-        await FirebaseClient.login(emailC.text, passwordC.text);
-        loading.setLoading(false);
+        final cret = await FirebaseClient.login(emailC.text, passwordC.text);
+        provider.setLoading(false);
+        provider.setUser(cret.user!);
         Redirect.switchTo(context, '/home');
       } catch (e) {
-        loading.setLoading(false);
+        provider.setLoading(false);
         hanldeError(context, e.toString().split('Exception: ')[1]);
       }
     };

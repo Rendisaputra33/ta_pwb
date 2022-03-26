@@ -14,10 +14,12 @@ class EntryApp extends StatelessWidget {
           stream: FirebaseClient.getStreamAuth,
           builder: (context, snapshot) {
             final authProvider = Provider.of<AuthProvider>(context);
+
             if (snapshot.connectionState == ConnectionState.active) {
               if (snapshot.data != null) {
                 authProvider.setUser(snapshot.data!);
               }
+
               return SplashScreen(isAuth: (snapshot.data != null));
               // when waitinf
             } else if (snapshot.connectionState == ConnectionState.waiting) {
