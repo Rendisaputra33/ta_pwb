@@ -22,7 +22,7 @@ class RoundedButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: width ?? SizeUtil.width(context) * 0.70,
       child: TextButton(
         onPressed: press,

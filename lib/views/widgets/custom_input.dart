@@ -6,7 +6,8 @@ class CustomInput extends StatefulWidget {
   final String? hint;
   final TextEditingController? controller;
 
-  const CustomInput({Key? key, this.secure, this.hint, this.controller}) : super(key: key);
+  const CustomInput({Key? key, this.secure, this.hint, this.controller})
+      : super(key: key);
 
   @override
   State<CustomInput> createState() => _CustomInputState();
@@ -15,7 +16,7 @@ class CustomInput extends StatefulWidget {
 class _CustomInputState extends State<CustomInput> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       child: TextField(
         controller: widget.controller,
         obscureText: widget.secure ?? false,
