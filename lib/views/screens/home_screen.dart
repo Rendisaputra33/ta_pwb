@@ -1,16 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:musix_app/provider/auth_provider.dart';
-import 'package:musix_app/services/firebase_client.dart';
-import 'package:musix_app/utils/Size.dart';
-import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final authProvider = Provider.of<AuthProvider>(context);
-
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
@@ -24,27 +18,39 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: Container(
-        color: Colors.white,
-        width: SizeUtil.width(context),
-        height: SizeUtil.height(context),
-        child: Center(
-          child: Column(
-            children: [
-              const Text('home'),
-              ElevatedButton(
-                onPressed: () async {
-                  if (authProvider.user.photoURL != null) {
-                    await authProvider.googleLogout();
-                  }
-                  await FirebaseClient.auth.signOut();
-                },
-                child: const Text('signout'),
+      body: CustomScrollView(
+        slivers: <Widget>[
+          const SliverAppBar(
+            pinned: true,
+            floating: true,
+            backgroundColor: Colors.white,
+            snap: true,
+            elevation: 0.3,
+            expandedHeight: 100.0,
+            flexibleSpace: FlexibleSpaceBar(
+              title: Text(
+                'Title',
+                style: TextStyle(
+                  color: Colors.black,
+                ),
               ),
-              Text(authProvider.user.email!)
-            ],
+            ),
           ),
-        ),
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (BuildContext context, int index) {
+                return Container(
+                  color: index.isOdd ? Colors.white : Colors.black12,
+                  height: 100.0,
+                  child: Center(
+                    child: Text('$index', textScaleFactor: 5),
+                  ),
+                );
+              },
+              childCount: 20,
+            ),
+          ),
+        ],
       ),
     );
   }

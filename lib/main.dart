@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:musix_app/entry.dart';
 import 'package:musix_app/provider/auth_provider.dart';
+import 'package:musix_app/provider/music_provider.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
@@ -23,8 +24,11 @@ class Application extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => AuthProvider(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => AuthProvider()),
+        ChangeNotifierProvider(create: (_) => MusicProvider())
+      ],
       child: MaterialApp(
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
