@@ -37,3 +37,40 @@ class _CustomInputState extends State<CustomInput> {
     );
   }
 }
+
+class CustomInputSearch extends StatefulWidget {
+  final bool? secure;
+  final String? hint;
+  final TextEditingController? controller;
+
+  const CustomInputSearch({Key? key, this.secure, this.hint, this.controller})
+      : super(key: key);
+
+  @override
+  State<CustomInputSearch> createState() => _CustomInputSearchState();
+}
+
+class _CustomInputSearchState extends State<CustomInputSearch> {
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      child: TextField(
+        controller: widget.controller,
+        obscureText: widget.secure ?? false,
+        decoration: InputDecoration(
+          hintText: widget.hint,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(13),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(13),
+            borderSide: const BorderSide(width: 1.5),
+          ),
+          focusColor: Pallete.primary,
+          contentPadding: const EdgeInsets.all(13),
+          isDense: true,
+        ),
+      ),
+    );
+  }
+}

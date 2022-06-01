@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:musix_app/utils/Size.dart';
 
 class FavouriteScreen extends StatelessWidget {
   const FavouriteScreen({Key? key}) : super(key: key);
@@ -49,11 +50,11 @@ class FavouriteScreen extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 15),
                 color: const Color(0xFF4D0099),
                 child: ListView.builder(
-                  itemCount: 10,
+                  itemCount: 1,
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 15, vertical: 1),
+                          horizontal: 5, vertical: 1),
                       child: Container(
                         padding: const EdgeInsets.only(
                           left: 5,
@@ -69,8 +70,11 @@ class FavouriteScreen extends StatelessWidget {
                         child: Row(
                           children: [
                             ClipRRect(
-                              child: Image.asset(
-                                'assets/images/list.png',
+                              child: Image.network(
+                                'https://i.scdn.co/image/ab67616d0000b27391079d7ff840d5273aa2957d',
+                                width: 45,
+                                height: 48,
+                                fit: BoxFit.cover,
                               ),
                             ),
                             Padding(
@@ -80,14 +84,15 @@ class FavouriteScreen extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: const [
                                   Text(
-                                    'New Brand Shoes',
+                                    'Seperti Kemarin',
                                     style: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 20),
+                                      fontFamily: 'Poppins',
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20,
+                                    ),
                                   ),
                                   Text(
-                                    'SH-231',
+                                    'Noah',
                                     style: TextStyle(
                                       fontFamily: 'Poppins',
                                       fontWeight: FontWeight.w400,
@@ -97,9 +102,11 @@ class FavouriteScreen extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            const Padding(
-                              padding: EdgeInsets.only(left: 70, bottom: 0),
-                              child: Icon(
+                            Padding(
+                              padding: EdgeInsets.only(
+                                  left: SizeUtil.width(context) * 32 / 100,
+                                  bottom: 0),
+                              child: const Icon(
                                 Icons.favorite,
                                 color: Colors.red,
                               ),
