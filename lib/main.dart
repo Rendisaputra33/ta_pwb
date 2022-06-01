@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:musix_app/entry.dart';
 import 'package:musix_app/provider/auth_provider.dart';
 import 'package:musix_app/provider/music_provider.dart';
+import 'package:musix_app/provider/nav_provider.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
@@ -27,7 +28,8 @@ class Application extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => AuthProvider()),
-        ChangeNotifierProvider(create: (_) => MusicProvider())
+        ChangeNotifierProvider(create: (_) => MusicProvider()),
+        ChangeNotifierProvider(create: (_) => NavProvider())
       ],
       child: MaterialApp(
         title: 'Flutter Demo',

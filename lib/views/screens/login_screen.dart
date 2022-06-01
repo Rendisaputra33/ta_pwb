@@ -21,6 +21,13 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController emailC = TextEditingController();
   final TextEditingController passwordC = TextEditingController();
 
+  @override
+  void dispose() {
+    emailC.dispose();
+    passwordC.dispose();
+    super.dispose();
+  }
+
   Function() callbackLogin(AuthProvider provider, BuildContext context) {
     return () async {
       try {

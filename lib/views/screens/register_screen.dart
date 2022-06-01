@@ -21,6 +21,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController pC = TextEditingController();
   final TextEditingController cC = TextEditingController();
 
+  @override
+  void dispose() {
+    uC.dispose();
+    pC.dispose();
+    cC.dispose();
+    eC.dispose();
+    super.dispose();
+  }
+
   Function() handleSubmit(BuildContext context, AuthProvider loading) {
     return () async {
       try {
